@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 
 app.set("view engine", "pug");
 
-const routes = require("./routes.index");
+const routes = require("./routes");
 
 app.use(routes);
 
