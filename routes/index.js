@@ -1,6 +1,11 @@
 const express = require("express");
-const router = express.Router();
+const router = express().router;
 
+// * ----------
+// * ROUTES
+// * ----------
+
+// * root
 router.get("/", (req, res) => {
     const name = req.cookies.username;
     if (name) {
@@ -10,7 +15,14 @@ router.get("/", (req, res) => {
     }
 });
 
-
+// * /card
+router.get("/card", (req, res) => {
+    // res.locals.prompt = "Who is buried in Grant's Tomb?"
+    res.render("card", {
+        prompt: "Who is buried in Grant's Tomb?",
+        hint: "Think about whose tomb it is."
+    });
+});
 
 // * /hello
 router.get("/hello", (req, res) => {
