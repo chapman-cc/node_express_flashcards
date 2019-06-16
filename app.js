@@ -19,7 +19,7 @@ app.use((req, res, next) => {
     console.log("Hello");
     const err = new Error("Oh no");
     err.status = 500;
-    next();
+    next(err);
 });
 
 app.use((req, res, next) => {
