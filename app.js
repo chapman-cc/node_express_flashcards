@@ -14,6 +14,7 @@ const cookieParser = require("cookie-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use('/static', express.static("public"));
 
 app.use((req, res, next) => {
     console.log("Hello");
@@ -32,9 +33,11 @@ app.use((req, res, next) => {
 
 app.set("view engine", "pug");
 
-const routes = require("./routes");
+const mainRoutes = require("./routes");
+const cardRoutes = require("./routes/cards");
 
-app.use(routes);
+app.use(mainRoutes);
+app.use("/cards", cardRoutes);
 
 app.use((req, res, next) => {
     const err = new Error("Not found");
